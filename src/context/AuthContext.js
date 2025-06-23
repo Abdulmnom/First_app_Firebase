@@ -8,7 +8,7 @@ import {
   updatePassword as firebaseUpdatePassword,
   onAuthStateChanged
 } from 'firebase/auth'
-import { auth } from '../Firebase' 
+import { auth } from '../Firebase.js'
 
 const AuthContext = createContext()
 
