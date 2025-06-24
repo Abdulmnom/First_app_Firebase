@@ -21,6 +21,7 @@ function App() {
            <Route path='/login' element={<Login />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
             <Route path='/update-profile' element={<UpdateProfile />} />
+            <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/' element={ <RequireAuth><Dashboard /> </RequireAuth> } />
           </Routes>
         </Router>
