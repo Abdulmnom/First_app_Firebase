@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdateProfile from './pages/UpdateProfile';
 import Dashboard from './pages/Dashboard';
+
 import RequireAuth from './context/RequireAuth.js';
 
 
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
      <Container className='d-flex align-items-center justify-content-center' style={{minHeight: "100vh"}}>
       <div className='w-100' style={{maxWidth: "400px"}}>
+        
         <Router>
           <Routes>
            <Route path='/signup' element={<Signup />} />
