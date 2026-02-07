@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+import { AuthProvider } from './context/AuthContext';
+
+test('renders login page', async () => {
+  render(
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  );
+  const heading = await screen.findByRole('heading', { name: /log in/i });
+  expect(heading).toBeInTheDocument();
 });

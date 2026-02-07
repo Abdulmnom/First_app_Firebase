@@ -11,7 +11,7 @@ const Signup = () => {
   const EmailRef = React.useRef()
   const PasswordRef = React.useRef()
   const PasswordConfirmRef = React.useRef()
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -27,7 +27,7 @@ const Signup = () => {
       await signup(EmailRef.current.value, PasswordRef.current.value)
       // يمكنك إعادة التوجيه هنا بعد النجاح إذا أردت
       console.log("User signed up successfully")
-        navigate('/')
+      navigate('/')
 
     } catch (error) {
       setError('Failed to create an account: ' + error.message)

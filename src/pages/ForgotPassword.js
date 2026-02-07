@@ -1,6 +1,6 @@
 import React from 'react'
-import {Card, Button, Form, Alert} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import { Card, Button, Form, Alert } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate, useLocation } from 'react-router-dom'
 
@@ -27,32 +27,32 @@ const ForgotPassword = () => {
 
         } catch (error) {
             setError('Failed to send password reset email: ' + error.message)
-            
+
         }
         setLoading(false)
     }
-  return (
-    <>
-    <Card>
-        <Card.Body>
-            <h2 className='text-center mb-4'>Reset Password</h2>
-            <Form onSubmit={handleSubmit}>
-                {error && <Alert variant='danger'>{error}</Alert>}
-                {message && <Alert variant='success'>{message}</Alert>}
-                <Form.Group id='email' htmlFor='email'>
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type='email' required ref={EmailRef} />
-                </Form.Group>
-                <Button className='w-100' type='submit' disabled={loading}>Reset Password</Button>
-            </Form>
-        </Card.Body>
+    return (
+        <>
+            <Card>
+                <Card.Body>
+                    <h2 className='text-center mb-4'>Reset Password</h2>
+                    <Form onSubmit={handleSubmit}>
+                        {error && <Alert variant='danger'>{error}</Alert>}
+                        {message && <Alert variant='success'>{message}</Alert>}
+                        <Form.Group id='email' htmlFor='email'>
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type='email' required ref={EmailRef} />
+                        </Form.Group>
+                        <Button className='w-100' type='submit' disabled={loading}>Reset Password</Button>
+                    </Form>
+                </Card.Body>
 
-    </Card>
-    <Card.Text className='text-center mt-2'>
-        <Link to='/login'>Log In</Link>
-    </Card.Text>
-    </>
-  )
+            </Card>
+            <Card.Text className='text-center mt-2'>
+                <Link to='/login'>Log In</Link>
+            </Card.Text>
+        </>
+    )
 }
 
 export default ForgotPassword
