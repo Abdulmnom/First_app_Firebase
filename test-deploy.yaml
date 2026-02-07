@@ -1,0 +1,49 @@
+# GitHub Actions Workflow for React + Firebase
+# This workflow will build and test the React app, and deploy to Firebase Hosting on merge to main.
+
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+        env:
+          CI: true # Forces Jest to run in CI mode (non-interactive)
+
+      - name: Build project
+        run: npm run build
+
+      # Optional: Deploy to Firebase Hosting on merge to main
+      # Requires FIREBASE_SERVICE_ACCOUNT_... secret to be set in repository settings
+      # See: https://github.com/FirebaseExtended/action-hosting-deploy
+      - name: Deploy to Firebase Hosting
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_INTRO_FIREBASE_22 }}'
+          channelId: live
+          projectId: intro-firebase-22 # Replace with your actual Firebase project ID
